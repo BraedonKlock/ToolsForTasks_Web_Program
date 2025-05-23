@@ -19,28 +19,58 @@ function addJob() {
 }
 
 function loadJobs() {
-    const jobList = JSON.parse(localStorage.getItem("jobList")) || [];
     const jobDisplay = document.getElementById("jobDisplay");
-    jobDisplay.innerHTML = "";
+    const button = document.getElementById("loadJobs");
     
-    for (let i = 0; i < jobList.length; i++) {
-        const job = jobList[i];
+    if (jobDisplay.style.display === "none" || jobDisplay.innerHTML === "") {
+        const jobList = JSON.parse(localStorage.getItem("jobList")) || [];
+        jobDisplay.innerHTML = "";
 
-        const div = document.createElement("div");
-        div.setAttribute("class", "job");
+        for (let i = 0; i < jobList.length; i++) {
+            const job = jobList[i];
 
-        const name = document.createElement("p");
-        name.setAttribute("class", "JobInfo");
-        name.textContent = job.name;
+            const div = document.createElement("div");
+            div.setAttribute("class", "job");
 
-        const notes = document.createElement("p");
-        notes.setAttribute("class", "jobInfo");
-        notes.textContent = job.notes;
+            const name = document.createElement("p");
+            name.setAttribute("class", "JobInfo");
+            name.textContent = job.name;
 
-        div.appendChild(name);
-        div.appendChild(notes);
+            const notes = document.createElement("p");
+            notes.setAttribute("class", "jobInfo");
+            notes.textContent = job.notes;
 
-        jobDisplay.appendChild(div);
+            const removeBtn = document.createElement("button");
+            removeBtn.setAttribute("id", "removeBtn");
+            removeBtn.textContent = "Remove";
+            removeBtn.addEventListener("click", function() {
+                deleteJob(i);
+            });
 
+            div.appendChild(name);
+            div.appendChild(notes);
+            div.appendChild(removeBtn);
+
+            jobDisplay.appendChild(div);
+
+        }
+        jobDisplay.style.display = "";
+        button.textContent = "Close Job List";
+    } else {
+        jobDisplay.style.display = "none";
+        button.textContent = "List Jobs";
+    }
+}
+
+function deleteJob(index) {
+    const jobList = JSON.parse(localStorage.getItem("jobList")) || [];
+    if (index >=  0 && index < jobList.length) {
+        jobList.splice(index, 1);
+
+        localStorage.setItem("jobList", JSON.stringify(jobList));
+        const jobDisplay = document.getElementById("jobDisplay");
+
+        jobDisplay.style.display = "none";
+        loadJobs();
     }
 }
