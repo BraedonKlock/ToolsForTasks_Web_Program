@@ -56,7 +56,42 @@ nav input {
 }
 main {
   width: 100%;
-  height: 80vw;
+  height: 40vw;
   text-align: center;
   background-color: rgb(247,238,218);
+  padding-top: 2vw;
 }
+#jobOptions {
+  display: grid;
+  grid-template-columns: repeat(3, 100%);
+  gap: 2vw;
+  width: 31%;
+}
+
+.addJob {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: .5vw solid black;
+  padding: 0 1vw 1vw 1vw;
+  box-shadow: .5vw 1vw 2.5vw rgba(0, 0, 0, 0.5);
+}
+#jobOptions input {
+  text-align: center;
+}
+
+#jobDisplay {
+  display: grid;
+  grid-template-columns: repeat(2, 100%);
+  width: 47%;
+  gap: 2vw;
+}
+
+.job {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1vw solid black;
+  border-radius: 3vw;
+}
+

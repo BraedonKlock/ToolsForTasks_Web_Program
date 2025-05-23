@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobs - Tools for Tasks</title>
+    <link rel="stylesheet" href="css/jobs.css">
+</head>
+<body>
+    <header>
+        <div id="logoContainer"><a href="index.html"><img id="logo" src="photos/logo1.PNG"></a></div>
+        <section id="headRight">
+            <div class="headPhotos">
+                <a href="Jobs.html"><img class="photos" src="photos/jobs.png"></a>
+                <p>JOBS</p>
+            </div>
+            <div class="headPhotos">
+                <a href="tools.html"><img class="photos" src="photos/tools.png"></a>
+                <p>TOOLS</p>
+            </div>
+                <div class="headPhotos"><a href="materials.html"><img class="photos" src="photos/materials.png"></a>
+                <P>MATERIALS</P>
+            </div>
+        </section>
+    </header>
+    <nav>
+        <input type="text" placeholder="Search Jobs">
+    </nav>
+    <main>
+        <section id="jobOptions">
+            <div class="addJob">
+                <p>Add Job</p>
+                <input type="text" id="jobName" placeholder="Enter job name">
+                <input type="text" id="jobNotes" placeholder="Enter notes">
+                <button onclick="addJob()" >Add</button>
+            </div>
+            
+            <div class="addJob">
+                <p>Add Job</p>
+                <input type="text" class="jobName" placeholder="Enter job name">
+                <input type="text" class="jobNotes" placeholder="Enter notes">
+            </div>
+            <div class="addJob">
+                <p>Add Job</p>
+                <input type="text" class="jobName" placeholder="Enter job name">
+                <input type="text" class="jobNotes" placeholder="Enter notes">
+            </div>
+        </section>
+        <button onclick="loadJobs()" id="loadJobs">List Jobs</button>
+        <div id="jobDisplay"></div>
+
+        </section>
+    </main>
+    <script src="JavaScript/addJob.js"></script>
+</body>
+</html>
