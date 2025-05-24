@@ -94,7 +94,6 @@
     #loadJobs {
       margin: 4vw 0 4vw 0;
       width: 40%;
-      background-color: whitesmoke;
     }
 
     /*Class for styling all Jobs names*/
@@ -105,6 +104,8 @@
     /*Class for styling all jobs notes*/ 
     .jobsNotes {
       text-align: left;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
     }
 
     /*Div styling for list jobs window*/
@@ -128,7 +129,6 @@
       word-wrap: break-word;
       overflow-wrap: break-word;
       white-space: normal;
-      background-color: rgb(174, 120, 84);
     }
     #listJobsWindow p {
       margin: 0;
@@ -180,11 +180,13 @@
       justify-content: center;
       align-items: center;
       gap: 2vw;
-      background-color: rgb(174, 120, 84);
+      background-color: rgb(247,238,218);
       border: .2vw solid black;
       border-radius: 2vw;
       box-shadow: .5vw 1vw 2.5vw rgba(0, 0, 0, 0.5);
       padding: 2vw;
+      white-space: pre-wrap;
+      word-wrap: break-word;
     }
     #jobName, #jobNotes {
       border: .2vw solid black;
@@ -201,7 +203,7 @@
     }
     button {
       border: .2vw solid black;
-      background-color: rgb(247,238,218);
+      background-color: whitesmoke;
     }
 } 
 
