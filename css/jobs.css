@@ -1,5 +1,5 @@
 @media (max-width: 600px) {
-    body {
+  body {
       background-color: white;
       margin: 0;
       padding: 0 2vw 0 2vw;
@@ -62,13 +62,14 @@
       background-color: rgb(247,238,218);
       padding-top: 2vw;
     }
-    
+
     /*Styling for the div that holds job options*/
     #jobOptions {
       display: grid;
       justify-content: center;
       grid-template-columns: repeat(3, 31%);
       gap: 2vw;
+      margin: 2vw 0 0 0;
     }
 
     /*Styling for job options (add, Edit, Delete)*/
@@ -81,7 +82,7 @@
       border-radius: 2vw;
       padding: 0 1vw 1vw 1vw;
       box-shadow: .5vw 1vw 2.5vw rgba(0, 0, 0, 0.5);
-      background-color: rgb(247,238,218);
+      background-color: 	rgb(174, 120, 84);
       padding: 2vw 2vw 2vw 2vw;
     }
     .JobOptionsStyle p {
@@ -91,7 +92,19 @@
 
     /*Styling for list Jobs button*/
     #loadJobs {
-      margin: 2vw 0 2vw 0;
+      margin: 4vw 0 4vw 0;
+      width: 40%;
+      background-color: whitesmoke;
+    }
+
+    /*Class for styling all Jobs names*/
+    .jobsNames {
+      font-weight: bold;
+    }
+
+    /*Class for styling all jobs notes*/ 
+    .jobsNotes {
+      text-align: left;
     }
 
     /*Div styling for list jobs window*/
@@ -108,12 +121,44 @@
       flex-direction: column;
       justify-content: center;
       gap: 2vw;
-      border: 1vw solid black;
+      border: .5vw solid black;
       border-radius: 3vw;
+      box-shadow: .5vw 1vw 2.5vw rgba(0, 0, 0, 0.5);
       padding: 2vw;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      white-space: normal;
+      background-color: rgb(174, 120, 84);
     }
     #listJobsWindow p {
       margin: 0;
+    }
+    #viewJobDisplay {
+      display: flex;
+      justify-content: center;
+    }
+
+    /*Styling for the view job window*/
+    #viewJobDelete {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2vw;
+      width:85%;
+      border: .2vw solid black;
+      border-radius: 3vw;
+      box-shadow: .5vw 1vw 2.5vw rgba(0, 0, 0, 0.5);
+      padding: 2vw;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      white-space: normal;
+    }
+    #viewJobDelete p {
+      margin: 0;
+    }
+    #viewDeleteBtn {
+      align-self: center;
+      width: 40%;
     }
 
     /*display container for jobs page*/
@@ -123,35 +168,40 @@
     }
 
     /*Add Job window style*/
-    #addJobWindow {
+    #addEditJobWindow {
       display: flex;
       justify-content: center;
       width: 100%;
       background-color: rgb(247,238,218);
     }
-    #addJobWindowContainer {
+    #addEditJobWindowContainer {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       gap: 2vw;
-      background-color: rgb(247,238,218);
-      width: 50%;
+      background-color: rgb(174, 120, 84);
       border: .2vw solid black;
       border-radius: 2vw;
       box-shadow: .5vw 1vw 2.5vw rgba(0, 0, 0, 0.5);
-      padding: 2vw 0 2vw 0;
+      padding: 2vw;
     }
     #jobName, #jobNotes {
-      text-align: center;
-      width: 75%;
+      border: .2vw solid black;
     }
-    #addJobWindowContainer button {
+    #jobName[placeholder] {
+      text-align: center;
+    }
+    #addEditJobWindowContainer button {
       width: 40%;
     }
-    #addJobWindowContainer p {
+    #addEditJobWindowContainer p {
       margin: 0;
       font-weight: bold;
+    }
+    button {
+      border: .2vw solid black;
+      background-color: rgb(247,238,218);
     }
 } 
 
