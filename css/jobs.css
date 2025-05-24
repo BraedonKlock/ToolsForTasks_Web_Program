@@ -57,47 +57,101 @@
     }
     main {
       width: 100%;
-      height: 40vw;
+      min-height: 160vw;
       text-align: center;
       background-color: rgb(247,238,218);
       padding-top: 2vw;
     }
+    
+    /*Styling for the div that holds job options*/
     #jobOptions {
       display: grid;
-      grid-template-columns: repeat(3, 100%);
+      justify-content: center;
+      grid-template-columns: repeat(3, 31%);
       gap: 2vw;
-      width: 31%;
     }
-    
-    .addJob {
+
+    /*Styling for job options (add, Edit, Delete)*/
+    .JobOptionsStyle {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      gap: 2vw;
       border: .5vw solid black;
+      border-radius: 2vw;
       padding: 0 1vw 1vw 1vw;
       box-shadow: .5vw 1vw 2.5vw rgba(0, 0, 0, 0.5);
+      background-color: rgb(247,238,218);
+      padding: 2vw 2vw 2vw 2vw;
     }
-    #jobOptions input {
-      text-align: center;
+    .JobOptionsStyle p {
+      margin: 0;
+      font-weight: bold;
     }
-    
+
+    /*Styling for list Jobs button*/
     #loadJobs {
       margin: 2vw 0 2vw 0;
     }
+
+    /*Div styling for list jobs window*/
     #jobDisplay {
       display: grid;
-      grid-template-columns: repeat(2, 100%);
-      width: 47%;
+      justify-content: center;
+      grid-template-columns: repeat(2, 47%);
       gap: 2vw;
-    
     }
-    
-    .job {
+
+    /*class for list jobs window*/
+    #listJobsWindow {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      gap: 2vw;
       border: 1vw solid black;
       border-radius: 3vw;
+      padding: 2vw;
     }
-}
+    #listJobsWindow p {
+      margin: 0;
+    }
+
+    /*display container for jobs page*/
+    #display {
+      background-color: rgb(247,238,218);
+      width: 100%;
+    }
+
+    /*Add Job window style*/
+    #addJobWindow {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      background-color: rgb(247,238,218);
+    }
+    #addJobWindowContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2vw;
+      background-color: rgb(247,238,218);
+      width: 50%;
+      border: .2vw solid black;
+      border-radius: 2vw;
+      box-shadow: .5vw 1vw 2.5vw rgba(0, 0, 0, 0.5);
+      padding: 2vw 0 2vw 0;
+    }
+    #jobName, #jobNotes {
+      text-align: center;
+      width: 75%;
+    }
+    #addJobWindowContainer button {
+      width: 40%;
+    }
+    #addJobWindowContainer p {
+      margin: 0;
+      font-weight: bold;
+    }
+} 
 

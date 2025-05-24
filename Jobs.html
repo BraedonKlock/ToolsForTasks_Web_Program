@@ -28,30 +28,26 @@
     </nav>
     <main>
         <section id="jobOptions">
-            <div class="addJob">
+            <div class="JobOptionsStyle">
                 <p>Add Job</p>
-                <input type="text" id="jobName" placeholder="Enter job name">
-                <input type="text" id="jobNotes" placeholder="Enter notes">
-                <button onclick="addJob()" >Add</button>
+                <button onclick="addJobWindow()">Add</button>
             </div>
 
-            <div class="addJob">
-                <p>Add Job</p>
-                <input type="text" class="jobName" placeholder="Enter job name">
-                <input type="text" class="jobNotes" placeholder="Enter notes">
+            <div class="JobOptionsStyle">
+                <p>Edit Job</p>
+                <button onclick="editJob()">Edit</button>
             </div>
-            <div class="addJob">
-                <p>Add Job</p>
-                <input type="text" class="jobName" placeholder="Enter job name">
-                <input type="text" class="jobNotes" placeholder="Enter notes">
+
+            <div class="JobOptionsStyle">
+                <p>Delete Job</p>
+                <button onclick="deleteJob()">Delete</button>
             </div>
         </section>
-
-        <section>
+        
         <button onclick="loadJobs()" id="loadJobs">List Jobs</button>
-        <div id="jobDisplay"></div>
+        <section id="display">
         </section>
     </main>
-    <script src="JavaScript/addJob.js"></script>
+    <script src="JavaScript/jobs.js"></script>
 </body>
 </html>

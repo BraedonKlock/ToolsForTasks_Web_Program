@@ -1,62 +1,64 @@
-body {
-  background-color: white;
-  margin: 0;
-  padding: 0 2vw 0 2vw;
-}
-header {
-  display: flex;
-  width: 100%;
-  background-color: rgb(247,238,218);
-}
-#logoContainer {
-  display: flex;
-  align-items: center;
-  width: 50%;
-}
-#logo {
-  width: 96%;
-}
-#headRight {
-  display: flex;
-  overflow-x: auto;
-  gap: 2vw;
-  width:50%;
-  background-color: rgb(247,238,218);
-  padding: 2vw 0 4vw 0;
-}
-.headPhotos {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex: 0 0 auto;
-  width: 75%;
-  background-color: rgb(255,255,255);
-  box-shadow: .5vw 1vw 2.5vw rgba(0, 0, 0, 0.5);
-  border: .5vw solid black;
-  border-radius: 10vw;
-  text-align: center;
-  font-size: 3vw;
-  font-weight: bold;
-}
-.photos {
-  width: 65%;
-}
-nav {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding-top: 4vw;
-  background-color: rgb(247,238,218);
-}
-nav input {
-  width: 75%;
-  text-align: center;
-  border: .5vw solid black;
-}
-main {
-  width: 100%;
-  height: 80vw;
-  text-align: center;
-  background-color: rgb(247,238,218);
+@media (max-width: 600px) {
+  body {
+    background-color: white;
+    margin: 0;
+    padding: 0 2vw 0 2vw;
+  }
+  header {
+    display: flex;
+    width: 100%;
+    background-color: rgb(247,238,218);
+  }
+  #logoContainer {
+    display: flex;
+    align-items: center;
+    width: 50%;
+  }
+  #logo {
+    width: 96%;
+  }
+  #headRight {
+    display: flex;
+    overflow-x: auto;
+    gap: 2vw;
+    width:50%;
+    background-color: rgb(247,238,218);
+    padding: 2vw 0 4vw 0;
+  }
+  .headPhotos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+    width: 75%;
+    background-color: rgb(255,255,255);
+    box-shadow: .5vw 1vw 2.5vw rgba(0, 0, 0, 0.5);
+    border: .5vw solid black;
+    border-radius: 10vw;
+    text-align: center;
+    font-size: 3vw;
+    font-weight: bold;
+  }
+  .photos {
+    width: 65%;
+  }
+  nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 4vw;
+    background-color: rgb(247,238,218);
+  }
+  nav input {
+    width: 75%;
+    text-align: center;
+    border: .5vw solid black;
+  }
+  main {
+    width: 100%;
+    min-height: 160vw;
+    text-align: center;
+    background-color: rgb(247,238,218);
+  }
 }
