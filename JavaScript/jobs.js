@@ -79,7 +79,7 @@ function loadJobs() {
         const job = jobList[i];
         
         const div = document.createElement("div");
-        div.setAttribute("id", "listJobsWindow");
+        div.setAttribute("class", "listJobsWindow");
         
         const name = document.createElement("p");
         name.setAttribute("class", "jobsNames");
@@ -110,7 +110,6 @@ function deleteJobsWindow() {
     const display = document.getElementById("display");
     display.innerHTML = "<div id='jobDisplay'></div";
     const jobDisplay = document.getElementById("jobDisplay");
-    const button = document.getElementById("loadJobs");
     
     const jobList = JSON.parse(localStorage.getItem("jobList")) || [];
     jobDisplay.innerHTML = "";
@@ -119,7 +118,7 @@ function deleteJobsWindow() {
         const job = jobList[i];
         
         const div = document.createElement("div");
-        div.setAttribute("id", "listJobsWindow");
+        div.setAttribute("class", "listJobsWindow");
         
         const name = document.createElement("p");
         name.setAttribute("class", "jobsNames");
@@ -190,7 +189,7 @@ function deleteJob(index, call) {
     }
 }
 
-// This function displays the window when the job option "edit job" is choosen
+// This function displays the window when the job option "edit job" is chosen
 function editJobWindow() {
     const display = document.getElementById("display");
     display.innerHTML = '<div id="jobDisplay"></div>';
@@ -203,7 +202,7 @@ function editJobWindow() {
     const job = jobList[i];
         
         const div = document.createElement("div");
-        div.setAttribute("id", "listJobsWindow");
+        div.setAttribute("class", "listJobsWindow");
         
         const name = document.createElement("p");
         name.setAttribute("class", "jobsNames");

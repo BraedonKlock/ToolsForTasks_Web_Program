@@ -1,64 +1,211 @@
-@media (max-width: 600px) {  
+@media (max-width: 600px) {
   body {
-    background-color: white;
-    margin: 0;
-    padding: 0 2vw 0 2vw;
-  }
-  header {
-    display: flex;
-    width: 100%;
-    background-color: rgb(247,238,218);
-  }
-  #logoContainer {
-    display: flex;
-    align-items: center;
-    width: 50%;
-  }
-  #logo {
-    width: 96%;
-  }
-  #headRight {
-    display: flex;
-    overflow-x: auto;
-    gap: 2vw;
-    width:50%;
-    background-color: rgb(247,238,218);
-    padding: 2vw 0 4vw 0;
-  }
-  .headPhotos {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex: 0 0 auto;
-    width: 75%;
-    background-color: rgb(255,255,255);
-    box-shadow: .5vw 1vw 2.5vw rgba(0, 0, 0, 0.5);
-    border: .5vw solid black;
-    border-radius: 10vw;
-    text-align: center;
-    font-size: 3vw;
-    font-weight: bold;
-  }
-  .photos {
-    width: 65%;
-  }
-  nav {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    padding-top: 4vw;
-    background-color: rgb(247,238,218);
-  }
-  nav input {
-    width: 75%;
-    text-align: center;
-    border: .5vw solid black;
-  }
-  main {
-    width: 100%;
-    min-height: 160vw;
-    text-align: center;
-    background-color: rgb(247,238,218);
-  }
-}
+      background-color: white;
+      margin: 0;
+      padding: 0 2vw 0 2vw;
+    }
+    header {
+      display: flex;
+      width: 100%;
+      background-color: rgb(247,238,218);
+    }
+    #logo-container {
+      display: flex;
+      align-items: center;
+      width: 50%;
+    }
+    #logo {
+      width: 96%;
+    }
+    #head-right {
+      display: flex;
+      overflow-x: auto;
+      gap: 2vw;
+      width:50%;
+      background-color: rgb(247,238,218);
+      padding: 2vw 0 4vw 0;
+    }
+    .head-photos {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex: 0 0 auto;
+      width: 75%;
+      background-color: rgb(255,255,255);
+      box-shadow: .5vw 1vw 2.5vw rgba(0, 0, 0, 0.5);
+      border: .5vw solid black;
+      border-radius: 10vw;
+      text-align: center;
+      font-size: 3vw;
+      font-weight: bold;
+    }
+    .photos {
+      width: 65%;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      padding-top: 4vw;
+      background-color: rgb(247,238,218);
+    }
+    nav input {
+      width: 75%;
+      text-align: center;
+      border: .5vw solid black;
+    }
+    main {
+      width: 100%;
+      min-height: 160vw;
+      text-align: center;
+      background-color: rgb(247,238,218);
+      padding-top: 2vw;
+    }
+
+    /*Styling for the div that holds job options*/
+    #options {
+      display: grid;
+      justify-content: center;
+      grid-template-columns: repeat(3, 31%);
+      gap: 2vw;
+      margin: 2vw 0 0 0;
+    }
+
+    /*Styling for job options (add, Edit, Delete)*/
+    .options-style {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2vw;
+      border: .5vw solid black;
+      border-radius: 2vw;
+      padding: 0 1vw 1vw 1vw;
+      box-shadow: .5vw 1vw 2.5vw rgba(0, 0, 0, 0.5);
+      background-color: 	rgb(174, 120, 84);
+      padding: 2vw 2vw 2vw 2vw;
+    }
+    .options-style p {
+      margin: 0;
+      font-weight: bold;
+    }
+
+    /*Styling for list Jobs button*/
+    #load-item {
+      margin: 4vw 0 4vw 0;
+      width: 40%;
+    }
+
+    /*Class for styling all Jobs names*/
+    .item-names {
+      font-weight: bold;
+    }
+
+
+    /*Div styling for list jobs window*/
+    #item-display {
+      display: grid;
+      justify-content: center;
+      grid-template-columns: repeat(2, 47%);
+      gap: 2vw;
+    }
+
+    /*class for list jobs window*/
+    .list-item-window {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2vw;
+      border: .5vw solid black;
+      border-radius: 3vw;
+      box-shadow: .5vw 1vw 2.5vw rgba(0, 0, 0, 0.5);
+      padding: 2vw;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      white-space: normal;
+    }
+    .list-item-window p {
+      margin: 0;
+    }
+    #view-item-display {
+      display: flex;
+      justify-content: center;
+    }
+
+    /*Styling for the view job window*/
+    #view-item-delete {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2vw;
+      width:85%;
+      border: .2vw solid black;
+      border-radius: 3vw;
+      box-shadow: .5vw 1vw 2.5vw rgba(0, 0, 0, 0.5);
+      padding: 2vw;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      white-space: normal;
+    }
+    #view-item-delete p {
+      margin: 0;
+    }
+    #view-item-delete-btn {
+      align-self: center;
+      width: 40%;
+    }
+
+    /*display container for jobs page*/
+    #display {
+      background-color: rgb(247,238,218);
+      width: 100%;
+    }
+
+    /*Add Job window style*/
+    #add-edit-item-window {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      background-color: rgb(247,238,218);
+    }
+    #add-edit-item-window-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2vw;
+      background-color: rgb(247,238,218);
+      border: .2vw solid black;
+      border-radius: 2vw;
+      box-shadow: .5vw 1vw 2.5vw rgba(0, 0, 0, 0.5);
+      padding: 2vw;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      width: 80%;
+    }
+    #item-name, #item-qty {
+      border: .2vw solid black;
+      background-color: whitesmoke;
+    }
+    #item-name {
+        width: 38%;
+    }
+    #item-qty {
+        width: 13%;
+    }
+    #item-name[placeholder] {
+      text-align: center;
+    }
+    #add-edit-item-window-container button {
+      width: 40%;
+    }
+    #add-edit-item-window-container p {
+      margin: 0;
+      font-weight: bold;
+    }
+    button {
+      border: .2vw solid black;
+      background-color: whitesmoke;
+    }
+} 
+

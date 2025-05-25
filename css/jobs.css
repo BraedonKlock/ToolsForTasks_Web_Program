@@ -117,7 +117,7 @@
     }
 
     /*class for list jobs window*/
-    #listJobsWindow {
+    .listJobsWindow {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -130,7 +130,7 @@
       overflow-wrap: break-word;
       white-space: normal;
     }
-    #listJobsWindow p {
+    .listJobsWindow p {
       margin: 0;
     }
     #viewJobDisplay {
