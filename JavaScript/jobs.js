@@ -143,8 +143,8 @@ function deleteJobsWindow() {
     }
 }
 
-// This functions loads jobs from storage for deletion
-function viewJob() {
+// This functions loads jobs from storage for viewing
+function viewJob(index) {
     const display = document.getElementById("display");
     display.innerHTML = "<div id='view-job-display'></div>";
     const viewJobDisplay = document.getElementById("view-job-display");
