@@ -9,7 +9,7 @@
       width: 100%;
       background-color: rgb(247,238,218);
     }
-    #logoContainer {
+    #logo-container {
       display: flex;
       align-items: center;
       width: 50%;
@@ -17,7 +17,7 @@
     #logo {
       width: 96%;
     }
-    #headRight {
+    #head-right {
       display: flex;
       overflow-x: auto;
       gap: 2vw;
@@ -25,7 +25,7 @@
       background-color: rgb(247,238,218);
       padding: 2vw 0 4vw 0;
     }
-    .headPhotos {
+    .head-photos {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -64,7 +64,7 @@
     }
 
     /*Styling for the div that holds job options*/
-    #jobOptions {
+    #job-options {
       display: grid;
       justify-content: center;
       grid-template-columns: repeat(3, 31%);
@@ -73,7 +73,7 @@
     }
 
     /*Styling for job options (add, Edit, Delete)*/
-    .JobOptionsStyle {
+    .job-options-style {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -85,31 +85,31 @@
       background-color: 	rgb(174, 120, 84);
       padding: 2vw 2vw 2vw 2vw;
     }
-    .JobOptionsStyle p {
+    .job-options-style p {
       margin: 0;
       font-weight: bold;
     }
 
     /*Styling for list Jobs button*/
-    #loadJobs {
+    #load-jobs {
       margin: 4vw 0 4vw 0;
       width: 40%;
     }
 
     /*Class for styling all Jobs names*/
-    .jobsNames {
+    .jobs-names {
       font-weight: bold;
     }
 
     /*Class for styling all jobs notes*/ 
-    .jobsNotes {
+    .jobs-notes {
       text-align: left;
       white-space: pre-wrap;
       overflow-wrap: break-word;
     }
 
     /*Div styling for list jobs window*/
-    #jobDisplay {
+    #job-display {
       display: grid;
       justify-content: center;
       grid-template-columns: repeat(2, 47%);
@@ -117,7 +117,7 @@
     }
 
     /*class for list jobs window*/
-    .listJobsWindow {
+    .list-jobs-window {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -130,16 +130,16 @@
       overflow-wrap: break-word;
       white-space: normal;
     }
-    .listJobsWindow p {
+    .list-jobs-window p {
       margin: 0;
     }
-    #viewJobDisplay {
+    #view-job-display {
       display: flex;
       justify-content: center;
     }
 
     /*Styling for the view job window*/
-    #viewJobDelete {
+    #view-job-delete {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -153,10 +153,10 @@
       overflow-wrap: break-word;
       white-space: normal;
     }
-    #viewJobDelete p {
+    #view-job-delete p {
       margin: 0;
     }
-    #viewDeleteBtn {
+    #view-delete-btn {
       align-self: center;
       width: 40%;
     }
@@ -168,13 +168,13 @@
     }
 
     /*Add Job window style*/
-    #addEditJobWindow {
+    #add-edit-job-window {
       display: flex;
       justify-content: center;
       width: 100%;
       background-color: rgb(247,238,218);
     }
-    #addEditJobWindowContainer {
+    #add-edit-job-window-container {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -188,16 +188,16 @@
       white-space: pre-wrap;
       word-wrap: break-word;
     }
-    #jobName, #jobNotes {
+    #job-name, #job-notes {
       border: .2vw solid black;
     }
-    #jobName[placeholder] {
+    #job-name[placeholder] {
       text-align: center;
     }
-    #addEditJobWindowContainer button {
+    #add-edit-job-window-container button {
       width: 40%;
     }
-    #addEditJobWindowContainer p {
+    #add-edit-job-window-container p {
       margin: 0;
       font-weight: bold;
     }

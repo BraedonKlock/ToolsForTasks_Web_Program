@@ -6,25 +6,25 @@ It also handles the loading of different "windows" within the <section id="displ
 // This function creates the add job window
 function addJobWindow() {
     const display = document.getElementById("display");
-    display.innerHTML = "<div id='addEditJobWindow'></div>";
-    const addJobWindow = document.getElementById("addEditJobWindow");
+    display.innerHTML = "<div id='add-edit-job-window'></div>";
+    const addJobWindow = document.getElementById("add-edit-job-window");
     
     const divContainer = document.createElement("div");
-    divContainer.setAttribute("id", "addEditJobWindowContainer");
+    divContainer.setAttribute("id", "add-edit-job-window-container");
      
     const label = document.createElement("p");
     label.textContent = "Add Job";
 
     const name = document.createElement("input");
     name.setAttribute("type", "text");
-    name.setAttribute("id", "jobName");
+    name.setAttribute("id", "job-name");
     name.setAttribute("placeholder", "Enter job name");
 
     const notes = document.createElement("textarea");
     notes.setAttribute("rows", "10");
     notes.setAttribute("cols", "40");
     notes.setAttribute("name", "notes");
-    notes.setAttribute("id", "jobNotes");
+    notes.setAttribute("id", "job-notes");
     notes.setAttribute("placeholder", "Enter Job notes");
 
     const addBtn = document.createElement("button");
@@ -42,8 +42,8 @@ function addJobWindow() {
 
 // This function saves jobs to local storage
 function addJob() {
-    const name = document.getElementById("jobName").value.trim();
-    const notes = document.getElementById("jobNotes").value.trim();
+    const name = document.getElementById("job-name").value.trim();
+    const notes = document.getElementById("job-notes").value.trim();
         if(name ==="") {
             alert("Ivalid input");
             return;
@@ -58,8 +58,8 @@ function addJob() {
     jobList.push(job);
     localStorage.setItem("jobList", JSON.stringify(jobList));
 
-    document.getElementById("jobName").value = "";
-    document.getElementById("jobNotes").value = "";
+    document.getElementById("job-name").value = "";
+    document.getElementById("job-notes").value = "";
 
     alert("Job added!");
 }
@@ -67,9 +67,9 @@ function addJob() {
 //Loads jobs for viewing window
 function loadJobs() {
     const display = document.getElementById("display");
-    display.innerHTML = "<div id='jobDisplay'></div";
-    const jobDisplay = document.getElementById("jobDisplay");
-    const button = document.getElementById("loadJobs");
+    display.innerHTML = "<div id='job-display'></div>";
+    const jobDisplay = document.getElementById("job-display");
+    const button = document.getElementById("load-jobs");
 
     
     const jobList = JSON.parse(localStorage.getItem("jobList")) || [];
@@ -79,19 +79,19 @@ function loadJobs() {
         const job = jobList[i];
         
         const div = document.createElement("div");
-        div.setAttribute("class", "listJobsWindow");
+        div.setAttribute("class", "list-jobs-window");
         
         const name = document.createElement("p");
-        name.setAttribute("class", "jobsNames");
+        name.setAttribute("class", "jobs-names");
         name.textContent = job.name;
 
         const notes = document.createElement("p");
-        notes.setAttribute("class", "jobsNotes");
+        notes.setAttribute("class", "jobs-notes");
 
         notes.textContent = job.notes;
 
         const viewBtn = document.createElement("button");
-        viewBtn.setAttribute("id", "viewBtn");
+        viewBtn.setAttribute("id", "view-btn");
         viewBtn.textContent = "View";
         viewBtn.addEventListener("click", function() {
         viewJob(i);
@@ -108,8 +108,8 @@ function loadJobs() {
 // This function loads jobs from local storage and displays it when you click "delete job"
 function deleteJobsWindow() {
     const display = document.getElementById("display");
-    display.innerHTML = "<div id='jobDisplay'></div";
-    const jobDisplay = document.getElementById("jobDisplay");
+    display.innerHTML = "<div id='job-display'></div>";
+    const jobDisplay = document.getElementById("job-display");
     
     const jobList = JSON.parse(localStorage.getItem("jobList")) || [];
     jobDisplay.innerHTML = "";
@@ -118,18 +118,18 @@ function deleteJobsWindow() {
         const job = jobList[i];
         
         const div = document.createElement("div");
-        div.setAttribute("class", "listJobsWindow");
+        div.setAttribute("class", "list-jobs-window");
         
         const name = document.createElement("p");
-        name.setAttribute("class", "jobsNames");
+        name.setAttribute("class", "jobs-names");
         name.textContent = job.name;
 
         const notes = document.createElement("p");
-        notes.setAttribute("class", "jobsNotes");
+        notes.setAttribute("class", "jobs-notes");
         notes.textContent = job.notes;
 
         const deleteBtn = document.createElement("button");
-        deleteBtn.setAttribute("id", "deleteBtn");
+        deleteBtn.setAttribute("id", "delete-btn");
         deleteBtn.textContent = "Delete";
         deleteBtn.addEventListener("click", function() {
         deleteJob(i, "delete");
@@ -144,25 +144,25 @@ function deleteJobsWindow() {
 }
 
 // This functions loads jobs from storage for deletion
-function viewJob(index) {
+function viewJob() {
     const display = document.getElementById("display");
-    display.innerHTML = "<div id='viewJobDisplay'></div";
-    const viewJobDisplay = document.getElementById("viewJobDisplay");
-    const button = document.getElementById("loadJobs");
+    display.innerHTML = "<div id='view-job-display'></div>";
+    const viewJobDisplay = document.getElementById("view-job-display");
+    const button = document.getElementById("load-jobs");
     
     const jobList = JSON.parse(localStorage.getItem("jobList")) || [];
 
     const job = jobList[index];
 
     const div = document.createElement("div");
-    div.setAttribute("id", "viewJobDelete");
+    div.setAttribute("id", "view-job-delete");
 
     const name = document.createElement("p");
-    name.setAttribute("class", "jobsNames");
+    name.setAttribute("class", "jobs-names");
     name.textContent = job.name;
 
     const notes = document.createElement("p");
-    notes.setAttribute("class", "jobsNotes");
+    notes.setAttribute("class", "jobs-notes");
     notes.textContent = job.notes;
 
     div.appendChild(name);
@@ -176,7 +176,7 @@ function deleteJob(index, call) {
         jobList.splice(index, 1);
 
         localStorage.setItem("jobList", JSON.stringify(jobList));
-        const jobDisplay = document.getElementById("jobDisplay");
+        const jobDisplay = document.getElementById("job-display");
 
         jobDisplay.style.display = "none";
         if (call === "delete"){
@@ -192,9 +192,9 @@ function deleteJob(index, call) {
 // This function displays the window when the job option "edit job" is chosen
 function editJobWindow() {
     const display = document.getElementById("display");
-    display.innerHTML = '<div id="jobDisplay"></div>';
+    display.innerHTML = "<div id='job-display'></div>";
 
-    const jobDisplay = document.getElementById("jobDisplay");
+    const jobDisplay = document.getElementById("job-display");
 
     const jobList = JSON.parse(localStorage.getItem("jobList")) || [];
 
@@ -202,18 +202,18 @@ function editJobWindow() {
     const job = jobList[i];
         
         const div = document.createElement("div");
-        div.setAttribute("class", "listJobsWindow");
+        div.setAttribute("class", "list-jobs-window");
         
         const name = document.createElement("p");
-        name.setAttribute("class", "jobsNames");
+        name.setAttribute("class", "jobs-names");
         name.textContent = job.name;
 
         const notes = document.createElement("p");
-        notes.setAttribute("class", "jobsNotes");
+        notes.setAttribute("class", "jobs-notes");
         notes.textContent = job.notes;
 
         const editBtn = document.createElement("button");
-        editBtn.setAttribute("id", "editBtn");
+        editBtn.setAttribute("id", "edit-btn");
         editBtn.textContent = "Edit";
         editBtn.addEventListener("click", function() {
         editJob(i);
@@ -230,20 +230,20 @@ function editJobWindow() {
 // This function displays the window that allows the user to edit their job
 function editJob(index) {
     const display = document.getElementById("display");
-    display.innerHTML = "<div id='addEditJobWindow'></div>";
-    const editJobWindow = document.getElementById("addEditJobWindow");
+    display.innerHTML = "<div id='add-edit-job-window'></div>";
+    const editJobWindow = document.getElementById("add-edit-job-window");
     const jobList = JSON.parse(localStorage.getItem("jobList")) || [];
     const job = jobList[index];
     
     const divContainer = document.createElement("div");
-    divContainer.setAttribute("id", "addEditJobWindowContainer");
+    divContainer.setAttribute("id", "add-edit-job-window-container");
     const label = document.createElement("p");
     label.textContent = "Edit Job";
 
     const name = document.createElement("input");
     name.value = job.name;
     name.setAttribute("type", "text");
-    name.setAttribute("id", "jobName");
+    name.setAttribute("id", "job-name");
     name.setAttribute("placeholder", "Enter job name");
 
     const notes = document.createElement("textarea");
@@ -251,7 +251,7 @@ function editJob(index) {
     notes.setAttribute("rows", "10");
     notes.setAttribute("cols", "40");
     notes.setAttribute("name", "notes");
-    notes.setAttribute("id", "jobNotes");
+    notes.setAttribute("id", "job-notes");
     notes.setAttribute("placeholder", "Enter Job notes");
 
     const saveBtn = document.createElement("button");
@@ -269,8 +269,8 @@ function editJob(index) {
 
 // This function is used in editJob() to save the edited job into local storage
 function saveJob(index) {
-    const name = document.getElementById("jobName").value.trim();
-    const notes = document.getElementById("jobNotes").value.trim();
+    const name = document.getElementById("job-name").value.trim();
+    const notes = document.getElementById("job-notes").value.trim();
 
     if (name === "" || notes === "") {
         alert("Invalid input");
