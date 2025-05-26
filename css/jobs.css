@@ -165,11 +165,13 @@
     #display {
       background-color: rgb(247,238,218);
       width: 100%;
+      
     }
 
     /*Add Job window style*/
     #add-edit-job-window {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       width: 100%;
       background-color: rgb(247,238,218);
@@ -204,6 +206,110 @@
     button {
       border: .2vw solid black;
       background-color: whitesmoke;
+    }
+
+
+    /*styling for add resource container in editJob*/ 
+    #resource-container {
+      display: flex;
+      justify-content: center;
+      gap: 2vw;
+      width: 90%;
+      margin: 3vw 0 3vw 0;
+    }
+
+    #tool-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2vw;
+      align-items: center;
+      border: .2vw solid black;
+      width: 47%;
+      padding: 2vw;
+      text-align: center;
+    }
+    #tool-container input {
+      width: 75%;
+      border: .2vw solid black;
+      text-align: center;
+    }
+
+    #material-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2vw;
+      width: 47%;
+      border: .2vw solid black;
+      padding: 2vw;
+      text-align: center;
+    }
+
+    #material-container input {
+      width: 75%;
+      border: .2vw solid black;
+      text-align: center;
+    }
+
+    #view-resource-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2vw;
+      width: 95%;
+      align-self: center;
+      padding: 2vw;
+    }
+
+    #view-tool-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2vw;
+      border: .2vw solid black;
+      width: 95%;
+      text-align: left;
+      padding: 1vw;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+
+    }
+    #tool-title {
+      text-align: center;
+      font-weight: bold;
+    }
+    #view-material-container {
+      display: flex;
+      flex-direction: column;
+      border: .2vw solid black;
+      gap: 4vw;
+      width: 95%;
+      text-align: left;
+      padding: 1vw;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    #material-title {
+      text-align: center;
+      font-weight: bold;
+    }
+    #add-edit-job-window #view-tool-container {
+      box-shadow: .5vw 1vw 2.5vw rgba(0, 0, 0, 0.5);
+      align-self: center;
+      border-radius: 2vw;
+    }
+    #add-edit-job-window #view-tool-container button {
+      width: 40%;
+    }
+
+    #add-edit-job-window #view-material-container {
+      box-shadow: .5vw 1vw 2.5vw rgba(0, 0, 0, 0.5);
+      align-self: center;
+      border-radius: 2vw;
+    }
+    #add-edit-job-window #view-material-container button {
+      width: 40%;
     }
 } 
 
