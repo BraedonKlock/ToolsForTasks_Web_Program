@@ -1,25 +1,33 @@
 /*
-This file handles all the adding, loading, deleting and editing of the jobList array.
-It also handles the loading of different "windows" within the <section id="display"> of jobs.html 
-*/
+ * - Braedon Klock -
+ * This file handles all the adding, loading, deleting and editing of the jobList array.
+ * It also handles the loading of different "windows" within the <section id="display"> of jobs.html 
+ */
 
-// This function creates the add job window
+/*
+ * Creates and displays the "Add Job" window.
+ * Uses DOM manipulation to dynamically generate and inject HTML elements into the DOM for the job input form.
+ */
 function addJobWindow() {
     const display = document.getElementById("display");
     display.innerHTML = "<div id='add-edit-job-window'></div>";
     const addJobWindow = document.getElementById("add-edit-job-window");
     
+    // Create the main container for the window
     const divContainer = document.createElement("div");
     divContainer.setAttribute("id", "add-edit-job-window-container");
      
+    // Create the add job window
     const label = document.createElement("p");
     label.textContent = "Add Job";
-
+    
+    // Create input for the name of the job to be added
     const name = document.createElement("input");
     name.setAttribute("type", "text");
     name.setAttribute("id", "job-name");
     name.setAttribute("placeholder", "Enter job name");
 
+    //creating input for the notes of the job to be added
     const notes = document.createElement("textarea");
     notes.setAttribute("rows", "10");
     notes.setAttribute("cols", "40");
@@ -27,109 +35,134 @@ function addJobWindow() {
     notes.setAttribute("id", "job-notes");
     notes.setAttribute("placeholder", "Enter Job notes");
 
+    // Creating add button and attaching an event listener to it which runs the addJob function
     const addBtn = document.createElement("button");
     addBtn.textContent = "Add";
     addBtn.addEventListener("click", function(){
         addJob();
     });
-
+    
+    // Appending elements to the main the container
     divContainer.appendChild(label);
     divContainer.appendChild(name);
     divContainer.appendChild(notes);
     divContainer.appendChild(addBtn);
+
+    // Injecting the main container into the window
     addJobWindow.appendChild(divContainer);
 }
 
-// This function saves jobs to local storage
+/*
+ * This function saves jobs to local storage.
+ * Gets the input elements in addJobWindow().
+ * Assigns the value of the input elements to variables which then are assigned to a job object.
+ * The job object is then pushed to the jobList array and that is saved in local storage.
+ */
 function addJob() {
+    // getting input element values  for the job name and notes
     const name = document.getElementById("job-name").value.trim();
     const notes = document.getElementById("job-notes").value.trim();
-        if(name ==="") {
+        if(name ==="") {    // Job must have a name
             alert("Ivalid input");
             return;
         }
         
-    const job = {
+    const job = {   // creating job object
         name: name,
         notes: notes,
-        tools: [],
-        materials: []
+        tools: [],  // tools array stores list of tools for the job
+        materials: []   // materials array stores list of materials for the job
     }
     
+    // getting joblist array from storage
     const jobList = JSON.parse(localStorage.getItem("jobList")) || [];
-    jobList.push(job);
-    localStorage.setItem("jobList", JSON.stringify(jobList));
+    jobList.push(job);  // pushing job object to jobList array
+    localStorage.setItem("jobList", JSON.stringify(jobList));   // saving Joblist array to local storage
 
+    // clearing input fields 
     document.getElementById("job-name").value = "";
     document.getElementById("job-notes").value = "";
 
-    alert("Job added!");
+    alert("Job added!");    // job added confirmation
 }
 
-//Loads jobs for viewing window
+/*
+ * This function loads and lists the jobs in the jobList array when "List Jobs" is clicked
+ * Uses DOM manipulation to dynamically generate and inject HTML elements into the DOM for the list job form.
+ */
 function loadJobs() {
     const display = document.getElementById("display");
     display.innerHTML = "<div id='job-display'></div>";
     const jobDisplay = document.getElementById("job-display");
     const button = document.getElementById("load-jobs");
 
-    
+    // getting jobList array and assigning it to a variable
     const jobList = JSON.parse(localStorage.getItem("jobList")) || [];
-    jobDisplay.innerHTML = "";
+    jobDisplay.innerHTML = "";  // clearing the HTML element so duplicates aren't displayed
     
+    // using a for loop to iterate through jobList indexes to display each jobs name and notes and creating a container for each job 
     for (let i = 0; i < jobList.length; i++) {
         const job = jobList[i];
         
-        const div = document.createElement("div");
+        const div = document.createElement("div");  //job container
         div.setAttribute("class", "list-jobs-window");
         
-        const name = document.createElement("p");
+        const name = document.createElement("p");   // job name
         name.setAttribute("class", "jobs-names");
         name.textContent = job.name;
 
-        const notes = document.createElement("p");
+        const notes = document.createElement("p");  // job notes
         notes.setAttribute("class", "jobs-notes");
-
         notes.textContent = job.notes;
 
+        /* creating a "view" button so the user can expand the job and view the tools and materials for that job.
+         * Attached an event listener that runs the viewJob() function which displays the jobs properties.
+         */
         const viewBtn = document.createElement("button");
         viewBtn.setAttribute("id", "view-btn");
         viewBtn.textContent = "View";
         viewBtn.addEventListener("click", function() {
-        viewJob(i);
+            // this function displays the jobs properties. passing the current jobs index as an argument to be used to retrieve the current job
+            viewJob(i); 
         });
-        
+        // appending job related elelments to the main job container
         div.appendChild(name);
         div.appendChild(notes);
         div.appendChild(viewBtn);
         
+        // injecting main job container into the HTML element
         jobDisplay.appendChild(div);
     }
 }
 
-// This function loads jobs from local storage and displays it when you click "delete job"
+/*
+ * This function displays a window of the list of jobs in the jobList array when the "Delete Job" option is clicked
+ * It functions like the viewJob() function display job objects name and notes but has a delete button
+ */
 function deleteJobsWindow() {
-    const display = document.getElementById("display");
-    display.innerHTML = "<div id='job-display'></div>";
-    const jobDisplay = document.getElementById("job-display");
+    const display = document.getElementById("display"); // getting element to display deletejob window
+    display.innerHTML = "<div id='job-display'></div>"; // clearing element display by creating a new element
+    const jobDisplay = document.getElementById("job-display");  // getting the new element to display jobs
     
-    const jobList = JSON.parse(localStorage.getItem("jobList")) || [];
+    const jobList = JSON.parse(localStorage.getItem("jobList")) || []; // getting jobList array from local storage
     jobDisplay.innerHTML = "";
     
+    /*using for loop to iterate through jobList array and display each job properties by inserting them into      created elements. button created for job deletion
+    */
     for (let i = 0; i < jobList.length; i++) {
         const job = jobList[i];
         
-        const div = document.createElement("div");
+        const div = document.createElement("div");  // job container
         div.setAttribute("class", "list-jobs-window");
         
-        const name = document.createElement("p");
+        const name = document.createElement("p");   // element displays job name
         name.setAttribute("class", "jobs-names");
         name.textContent = job.name;
 
-        const notes = document.createElement("p");
+        const notes = document.createElement("p");  // element displays job notes
         notes.setAttribute("class", "jobs-notes");
         notes.textContent = job.notes;
-
+        // creating delete button and attaching event listener that calls deleteJob() function. passing in current index of jobList as an argument to use to find the job and delete it
         const deleteBtn = document.createElement("button");
         deleteBtn.setAttribute("id", "delete-btn");
         deleteBtn.textContent = "Delete";
@@ -137,19 +170,24 @@ function deleteJobsWindow() {
         deleteJob(i, "delete");
         });
         
+        // appending job elements to the job container
         div.appendChild(name);
         div.appendChild(notes);
         div.appendChild(deleteBtn);
         
+        // injecting job container into the HTML element to be displayed
         jobDisplay.appendChild(div);
     }
 }
 
-// This functions loads jobs from storage for viewing
+/*
+ * This function is called in loadJobs(). it displays the job at the index that is passed in as an argument
+ * It displays job's name, notes, tools, and materials associated with the job
+ */
 function viewJob(index) {
-    const display = document.getElementById("display");
-    display.innerHTML = "<div id='view-job-display'></div>";
-    const viewJobDisplay = document.getElementById("view-job-display");
+    const display = document.getElementById("display"); // getting element to inject job properties for display
+    display.innerHTML = "<div id='view-job-display'></div>"; // clearing the element by creating a new <div>
+    const viewJobDisplay = document.getElementById("view-job-display"); // getting that <div> to inject job 
     const button = document.getElementById("load-jobs");
     
     const jobList = JSON.parse(localStorage.getItem("jobList")) || [];
