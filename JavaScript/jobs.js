@@ -167,7 +167,7 @@ function deleteJobsWindow() {
         deleteBtn.setAttribute("id", "delete-btn");
         deleteBtn.textContent = "Delete";
         deleteBtn.addEventListener("click", function() {
-        deleteJob(i, "delete");
+        deleteJob(i);
         });
         
         // appending job elements to the job container
@@ -190,90 +190,95 @@ function viewJob(index) {
     const viewJobDisplay = document.getElementById("view-job-display"); // getting that <div> to inject job 
     const button = document.getElementById("load-jobs");
     
-    const jobList = JSON.parse(localStorage.getItem("jobList")) || [];
+    // getting JobList array from storage to display tp user by injecting it into the elements elow 
+    const jobList = JSON.parse(localStorage.getItem("jobList")) || []; 
+    // creating job object to store job from array list at index passed in from the argument in loadJobs()
+    const job = jobList[index]; 
 
-    const job = jobList[index];
-
-    // name and notes displayed in elements
+    // Creating container to hold all elements that hold the job's properties
     const div = document.createElement("div");
     div.setAttribute("id", "view-job-delete");
 
-    const name = document.createElement("p");
+    const name = document.createElement("p"); // job name
     name.setAttribute("class", "jobs-names");
     name.textContent = job.name;
 
-    const notes = document.createElement("p");
+    const notes = document.createElement("p");  j// job notes
     notes.setAttribute("class", "jobs-notes");
     notes.textContent = job.notes;
 
-    //displaying tools and materials
-    const resourceDiv = document.createElement("section");
+    // creating a container to hold all the elements that hold that job's tools & matierisals, and the tool's an material's properties
+    const resourceDiv = document.createElement("section"); // container
     resourceDiv.setAttribute("id", "view-resource-container");
-
-    const toolDiv = document.createElement("div");
+    
+    // creating a container to hold tools
+    const toolDiv = document.createElement("div"); 
     toolDiv.setAttribute("id", "view-tool-container");
 
-    const toolTitle = document.createElement("p");
+    const toolTitle = document.createElement("p"); // container title
     toolTitle.setAttribute("id", "tool-title")
     toolTitle.textContent = "Tools";
 
-    toolDiv.appendChild(toolTitle);
+    toolDiv.appendChild(toolTitle); // appending tool container title to its container
     
+    // using a for loop to handle edge case of tool not being an array. 
     if (Array.isArray(job.tools)) {
+
+        // looping through tools array in job and creating elements in DOM to store tool's properties
         for (let i = 0; i < job.tools.length; i++) {
-            const tool = job.tools[i];
-            const toolP = document.createElement("p");
+            const tool = job.tools[i];  // storing tool in variable
+            const toolP = document.createElement("p");  // creating element to store tool properties 
             toolP.textContent = `${tool.name} — ${tool.qty}`;
-            toolDiv.appendChild(toolP);
+            toolDiv.appendChild(toolP); //appending element <p> to the tools conatiner
         }
     }
+    // appending tool container to section container that holds both tools and materials
+    resourceDiv.appendChild(toolDiv)
 
-    resourceDiv.appendChild(toolDiv);
-
-    // material container
+    // creating a container for materials
     const materialDiv = document.createElement("div");
     materialDiv.setAttribute("id", "view-material-container");
 
-    const materialTitle = document.createElement("p");
+    const materialTitle = document.createElement("p"); // creating title for material container
     materialTitle.setAttribute("id", "material-title")
     materialTitle.textContent = "Materials";
 
-    materialDiv.appendChild(materialTitle);
+    materialDiv.appendChild(materialTitle); // appending title to the material container
     
+    // handling edge case of materials not being initialized  as an array.
     if (Array.isArray(job.materials)) {
+
+        // for loop used to loop through materials array and creating elements in DOM to store the materials properties
         for (let i = 0; i < job.materials.length; i++) {
-            const material = job.materials[i];
-            const materialP = document.createElement("p");
+            const material = job.materials[i]; // storing material in material array in a variable
+            const materialP = document.createElement("p"); // creating element to hold material's properties
             materialP.textContent = `${material.name} — ${material.qty}`;
-            materialDiv.appendChild(materialP);
+            materialDiv.appendChild(materialP); // appending material properties to material container
         }
     }
 
-    resourceDiv.appendChild(materialDiv);
+    resourceDiv.appendChild(materialDiv); // appending material container to section container
 
-    div.appendChild(name);
-    div.appendChild(notes);
-    div.appendChild(resourceDiv);
-    viewJobDisplay.appendChild(div);
+    div.appendChild(name); // apppending job name to top most container
+    div.appendChild(notes); // appending job's notes to top most container
+    div.appendChild(resourceDiv); // appending tool's and material's container to top most  container
+    viewJobDisplay.appendChild(div); // injecting top most container into element for display
 }
 
-// This function deletes jobs from local storage
-function deleteJob(index, call) {
-    const jobList = JSON.parse(localStorage.getItem("jobList")) || [];
+// This function deletes jobs from local storage is is called from the deleteJobsWindow(). index of job being deleted is passed in as an argument.
+function deleteJob(index) {
+
+    // loading jobList array from local storage and storing it in a variable
+    const jobList = JSON.parse(localStorage.getItem("jobList")) || []; 
+
+    // using if statement to handle edge case of array out of bounds
     if (index >=  0 && index < jobList.length) {
-        jobList.splice(index, 1);
+        jobList.splice(index, 1); // deleting one job at index passed into function
 
-        localStorage.setItem("jobList", JSON.stringify(jobList));
-        const jobDisplay = document.getElementById("job-display");
+        localStorage.setItem("jobList", JSON.stringify(jobList)); // saving updating jobList to storage
 
-        jobDisplay.style.display = "none";
-        if (call === "delete"){
-            deleteJobsWindow();
-        } else if (call === "edit") {
-            editJobWindow();
-        } else {
-            loadJobs();
-        }
+        // displaying window again to give an update delete job window list without having to reload the page
+        deleteJobsWindow(); 
     }
 }
 
