@@ -203,7 +203,7 @@ function viewJob(index) {
     name.setAttribute("class", "jobs-names");
     name.textContent = job.name;
 
-    const notes = document.createElement("p");  j// job notes
+    const notes = document.createElement("p");  // job notes
     notes.setAttribute("class", "jobs-notes");
     notes.textContent = job.notes;
 
@@ -337,70 +337,72 @@ function editJobWindow() {
  * this list updates dynamically after something is either deleted or added.
  */ 
 function editJob(index) {
-    const display = document.getElementById("display");
+    const display = document.getElementById("display"); // getting display element to inject editJobWindow
     display.innerHTML = "<div id='add-edit-job-window'></div>"; // clearing display element by using innerHTML
-    const editJobWindow = document.getElementById("add-edit-job-window");
+    const editJobWindow = document.getElementById("add-edit-job-window"); // creating editJobWindow
     const jobList = JSON.parse(localStorage.getItem("jobList")) || []; // loading jobList array int oa variable
-    const job = jobList[index];
+    const job = jobList[index]; // getting job from array and assigning it to a variable
     
-    const divContainer = document.createElement("div");
+    const divContainer = document.createElement("div"); // creatign container to hold job edit 
     divContainer.setAttribute("id", "add-edit-job-window-container");
-    const label = document.createElement("p");
-    label.textContent = "Edit Job";
+    const label = document.createElement("p"); 
+    label.textContent = "Edit Job"; // title for container 
 
-    const name = document.createElement("input");
-    name.value = job.name;
+    const name = document.createElement("input"); // input element created to be able to edit job's name
+    name.value = job.name; // pre loading job's name for easy editing
     name.setAttribute("type", "text");
     name.setAttribute("id", "job-name");
     name.setAttribute("placeholder", "Enter job name");
 
-    const notes = document.createElement("textarea");
-    notes.value = job.notes;
+    const notes = document.createElement("textarea"); // creating text area element to be able to edit job's notes
+    notes.value = job.notes; // pre loading job's note for easy editing
     notes.setAttribute("rows", "10");
     notes.setAttribute("cols", "40");
     notes.setAttribute("name", "notes");
     notes.setAttribute("id", "job-notes");
     notes.setAttribute("placeholder", "Enter Job notes");
 
-    const saveBtn = document.createElement("button");
+    const saveBtn = document.createElement("button"); // creating save button to save job to local storage
     saveBtn.textContent = "Save";
-    saveBtn.addEventListener("click", function(){
+    saveBtn.addEventListener("click", function(){ // attached event listener that runes the function saveJob() when clicked
     saveJob(index);
     });
 
-    // creating a container to hold addtool and addmaterial
+    // creating a container to hold addtool and addmaterial containers
     const resourceDiv = document.createElement("section");
     resourceDiv.setAttribute("id", "resource-container");
 
-    // "Add tool" form
+    // creating container to hold add tool elements
     const toolDiv = document.createElement("div");
     toolDiv.setAttribute("id", "tool-container");
 
     const toolTitle = document.createElement("p");
-    toolTitle.textContent = "Add Tool";
+    toolTitle.textContent = "Add Tool"; // add tools containers title
 
-    const toolName = document.createElement("input");
+    const toolName = document.createElement("input"); // creating input element to add tool's name
     toolName.setAttribute("id", "tool-name")
     toolName.setAttribute("type", "text");
     toolName.setAttribute("list", "Tool-options");
     toolName.setAttribute("placeholder", "Enter tool");
-    
-    const toolList = JSON.parse(localStorage.getItem("toolList")) || [];
-    const toolNames = [];
 
-    const select = document.createElement("select");
+    const select = document.createElement("select"); // creating select element for drop down qty option
     select.setAttribute("id", "tool-qty");
+
+    // using for loop to create option elements with qty 1 - 10
     for (let i = 1; i <= 10; i ++) {
         const qty = document.createElement("option");
         qty.value = i;
         qty.textContent = i;
 
-        select.appendChild(qty);
+        select.appendChild(qty); // appending qty option elements to select element 
     }
 
-    const addToolBtn = document.createElement("button");
+    // creating add tool button that adds the tool to job in the JobList array
+    const addToolBtn = document.createElement("button"); 
     addToolBtn.textContent = "Add";
-    addToolBtn.addEventListener("click", function() {
+
+    // attached an event listener that runs the addToolToJob() function and saves updated joblist array to local storage then calls displayRes passing through updated arr.....
+    addToolBtn.addEventListener("click", function() { 
         addToolToJob(index);
         const updatedJobList = JSON.parse(localStorage.getItem("jobList")) || [];
         const updatedJob = updatedJobList[index];
