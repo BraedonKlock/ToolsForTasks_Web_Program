@@ -282,51 +282,65 @@ function deleteJob(index) {
     }
 }
 
-// This function displays the window when the job option "edit job" is chosen
+/*
+ * This function displays the window when the job option "edit job" is chosen
+ * It loads jobs from storage and displays them with an edit button.
+ * The edit button takes the user to a new window where they can edit job name and notes
+ * and add or delete tools and materials associated with the job
+ */ 
 function editJobWindow() {
-    const display = document.getElementById("display");
-    display.innerHTML = "<div id='job-display'></div>";
+    const display = document.getElementById("display"); // getting element where containers will be displayed
+    display.innerHTML = "<div id='job-display'></div>"; // clearing anything within the element by using innerHTML
 
     const jobDisplay = document.getElementById("job-display");
 
-    const jobList = JSON.parse(localStorage.getItem("jobList")) || [];
+    // loading jobsList array from storage and putting it in a variable
+    const jobList = JSON.parse(localStorage.getItem("jobList")) || []; 
 
+    // using a for loop to loop through jobList array and create the container that will hold the elements and the job's properties
     for (let i = 0; i < jobList.length; i++) {
     const job = jobList[i];
         
-        const div = document.createElement("div");
+        const div = document.createElement("div"); // creating container that holds the job
         div.setAttribute("class", "list-jobs-window");
         
-        const name = document.createElement("p");
+        const name = document.createElement("p"); // creating element that holds job's name
         name.setAttribute("class", "jobs-names");
         name.textContent = job.name;
 
-        const notes = document.createElement("p");
+        const notes = document.createElement("p"); // creating element that holds job's notes
         notes.setAttribute("class", "jobs-notes");
         notes.textContent = job.notes;
 
-        const editBtn = document.createElement("button");
+        const editBtn = document.createElement("button"); // creating button that takes the user to the edit window
         editBtn.setAttribute("id", "edit-btn");
         editBtn.textContent = "Edit";
-        editBtn.addEventListener("click", function() {
+        editBtn.addEventListener("click", function() { // attached event listener
         editJob(i);
         });
         
-        div.appendChild(name);
+        // appeding job's properties and edid button to the job's container
+        div.appendChild(name); 
         div.appendChild(notes);
         div.appendChild(editBtn);
         
-        jobDisplay.appendChild(div);
+        jobDisplay.appendChild(div); // injecting job container into element to be displayed
     }
 }
 
-// This function displays the window that allows the user to edit their job
+/*
+ * This function displays the window that allows the user to edit their job.
+ * This function creates a container that holds the job at the index thats passed through as an argument.
+ * The job's name and notes properties are pre-loaded into the input elements for editing
+ * Another container is created that allows for tools and materials to be added to the job
+ * One last container is created at the bottom that shows current list of tools and materials with delete buttons
+ * this list updates dynamically after something is either deleted or added.
+ */ 
 function editJob(index) {
-    // Edit job form
     const display = document.getElementById("display");
-    display.innerHTML = "<div id='add-edit-job-window'></div>";
+    display.innerHTML = "<div id='add-edit-job-window'></div>"; // clearing display element by using innerHTML
     const editJobWindow = document.getElementById("add-edit-job-window");
-    const jobList = JSON.parse(localStorage.getItem("jobList")) || [];
+    const jobList = JSON.parse(localStorage.getItem("jobList")) || []; // loading jobList array int oa variable
     const job = jobList[index];
     
     const divContainer = document.createElement("div");
