@@ -409,26 +409,24 @@ function editJob(index) {
         displayRes(updatedJob, editJobWindow);
     });
 
-    // "add material" form 
+    // Creating a container to hold the add material elements
     const materialDiv = document.createElement("div");
     materialDiv.setAttribute("id", "material-container");
 
     const materialTitle = document.createElement("p");
-    materialTitle.textContent = "Add Material";
+    materialTitle.textContent = "Add Material"; // add material title
 
-    const materialName = document.createElement("input");
+    const materialName = document.createElement("input"); // input element for material name
     materialName.setAttribute("id", "material-name");
     materialName.setAttribute("type", "text");
     materialName.setAttribute("placeholder", "Enter material");
     
-    const materialList = JSON.parse(localStorage.getItem("materialList")) || [];
-    const materialNames = [];
-
+    // input for material quantity
     const materialQty = document.createElement("input");
     materialQty.setAttribute("id", "material-qty");
     materialQty.setAttribute("placeholder", "Enter qty");
 
-
+    // creating add material button that calls add materialToJob function then jobList is loaded from local storage
     const addMaterialBtn = document.createElement("button");
     addMaterialBtn.textContent = "Add";
     addMaterialBtn.addEventListener("click", function() {
@@ -438,24 +436,30 @@ function editJob(index) {
         displayRes(updatedJob, editJobWindow);
     });
 
+    // appending tool elements to their container
     toolDiv.appendChild(toolTitle);
     toolDiv.appendChild(toolName);
     toolDiv.appendChild(select);
     toolDiv.appendChild(addToolBtn);
     
+    // appending material elements to their container
     materialDiv.appendChild(materialTitle);
     materialDiv.appendChild(materialName);
     materialDiv.appendChild(materialQty);
     materialDiv.appendChild(addMaterialBtn);
 
+    // appending tool and material container to their container
     resourceDiv.appendChild(toolDiv);
     resourceDiv.appendChild(materialDiv);
 
+    // appending edit job elements and tools/materials container to window container
     divContainer.appendChild(label);
     divContainer.appendChild(name);
     divContainer.appendChild(notes);
     divContainer.appendChild(saveBtn);
     divContainer.appendChild(resourceDiv);
+
+    // appending container for all containers in window to one final div
     editJobWindow.appendChild(divContainer);
 
     displayRes(job, editJobWindow);
